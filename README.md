@@ -2,8 +2,6 @@
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/abilists/plugin_sample)
 
-![markdown](https://github.com/abilists/plugin_sample/blob/master/doc/img/record01.png)
-
 This is a sample for plugins of Abilists
 
 이 심플은 새 플러그인을 개발하기 쉽게 해주는 소스코드 입니다.
