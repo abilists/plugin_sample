@@ -4,7 +4,7 @@
 
 This is a sample for plugins of Abilists
 
-이 심플은 새 플러그인을 개발하기 쉽게 해주는 소스코드 입니다.
+이 심플은 새 플러그인을 개발하기 쉽게 해주는 샘플 소스코드 입니다.
 
 ## 필요한 시스템 환경
 
@@ -17,7 +17,7 @@ This is a sample for plugins of Abilists
 
 ## New in v0.0.1
 
-- 새 데이터 입력
+- 데이터 입력
 - 데이터 습득
 - 데이터 갱신
 - 데이터 삭제
