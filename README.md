@@ -37,6 +37,14 @@ Git를 통해 다운로드 하기
 $ git clone https://github.com/abilists/plugin_sample.git
 ```
 
+새 플러그용 테이블을 Abilists데이터 베이스에 생성하기
+
+1. 샘플 테이블을 Abilists데이타 베이스에 등록하기
+2. InitiativeServiceImplTest.java을 선택하고 오늘쪽 마우스 버튼을 클릭
+3. Run as > jUnit Test을 선택합니다.
+
+![markdown](https://github.com/abilists/plugin_sample/blob/master/doc/img/sample01.png)
+
 ## How to start or stop
 
 개발자 환경에서 실행하기

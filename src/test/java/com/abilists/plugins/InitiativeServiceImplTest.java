@@ -34,6 +34,7 @@ public class InitiativeServiceImplTest {
 	public void createTablesTest() throws Exception {
 
         HashMap<String, String> mapHash = new HashMap<>();
+
         mapHash.put(PluginService.TABLE_NAME, mysqlMaster.getUrl());
         mapHash.put(PluginService.DB_URL, mysqlMaster.getUrl());
         mapHash.put(PluginService.DB_USERNAME, mysqlMaster.getUsername());

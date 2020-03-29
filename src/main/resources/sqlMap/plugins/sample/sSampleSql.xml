@@ -5,7 +5,7 @@
 <mapper namespace="com.abilists.plugins.sample.dao.SSampleDao">
 
 	<select id="sltSampleList" parameterType="map" 
-		resultType="com.abilists.plugins.Sample.bean.model.SampleModel">
+		resultType="com.abilists.plugins.sample.bean.model.SampleModel">
 		SELECT
 			usm_no,
 		  	usm_sample,
@@ -26,7 +26,7 @@
 	</select>
 
 	<select id="sltSample" parameterType="map" 
-		resultType="com.abilists.plugins.Sample.bean.model.SampleModel">
+		resultType="com.abilists.plugins.sample.bean.model.SampleModel">
 		SELECT
 			usm_no,
 		  	usm_sample,
