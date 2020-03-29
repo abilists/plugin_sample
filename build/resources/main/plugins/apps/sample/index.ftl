@@ -2,187 +2,112 @@
 <#import "/spring.ftl" as spring/>
 <@layout.myLayout>
 
-<style>
-.large-button {
-    margin: 10px;
-	padding: 7%;
-	width: 100%;
-    font-size: x-large;
-}
-
-</style>
-
 <div class="row">
 <div class="col-sm-12">
 	<div class="caption mittle-size-title middle-works-bg">
-		<h5><b>출퇴근 관리</b></h5>
+		<h5>
+			<b>샘플 제목</b>
+			<span id="newToggleId" class="glyphicon glyphicon-chevron-down right-symbol-works-button" aria-hidden="true" onClick="newFormToggle();"></span>
+		</h5>
 	</div>
 	<div class="item-box" style="overflow: hidden;">
 
-	<div class="row" style="margin-right: 0px;">
-		<div class="col-sm-6">
-			<form name="reachForm" action="${configBean.contextPath?if_exists}/plugins/Sample/startTime" method="post">
-				<button type="submit" class="btn btn-success btn-lg large-button <#if plugins.Sample??><#if plugins.Sample.utrStartTime?has_content>active</#if></#if>">
-				출근하기 <#if plugins.Sample??><#if plugins.Sample.utrStartTime?has_content><small>( ${plugins.Sample.utrStartTime?string('HH:mm:ss')?if_exists} )</small></#if></#if>
-				</button>
-			</form>
-		</div>
-		<div class="col-sm-6">
-			<form name="leaveForm" action="${configBean.contextPath?if_exists}/plugins/Sample/endTime" method="post">
-				<button type="submit" class="btn btn-warning btn-lg large-button <#if plugins.Sample??><#if plugins.Sample.utrEndTime?has_content>active</#if></#if>" <#if plugins.Sample??><#else>style="background-color: gray;border-color: gray;" disabled</#if> >
-				퇴근하기 <#if plugins.Sample??><#if plugins.Sample.utrEndTime?has_content><small>( ${plugins.Sample.utrEndTime?string('HH:mm:ss')?if_exists} )</small></#if></#if>
-				</button>
-			</form>
-		</div>
-	</div>
+		<#include "/apps/common/errorMessage.ftl"/>
+		<#include "/apps/common/abilistsSuccess.ftl"/>
 
-	<div id="udtMdataFormId" class="item-box" style="background-color: #efebe7;margin: 10px; display: none;">
-		<form id="updateFormId" name="updateForm" class="form-horizontal" action="${configBean.contextPath?if_exists}/plugins/Sample/udtSample" method="post" onkeypress="return captureReturnKey(event);">
-	  	  <div class="row">
-	  	  	<div class="col-sm-3 col-md-3">
-	  	  		<label class="control-label">근무 종류</label>
-				<select id="utrKindId" class="form-control" name="utrKind" >
-					<option value="0">상근</option>
-					<option value="2">휴일</option>
-					<option value="3">외근</option>
-					<option value="4">출장</option>
-					<option value="5">연수</option>
-					<option value="6">파견</option>
-					<option value="7">자택근무</option>
-					<option value="8">결근</option>
-					<option value="9">휴무</option>
-					<option value="10">휴가</option>
-					<option value="11">생리휴가</option>
-					<option value="12">대기</option>
-					<option value="20">기타</option>
-			    </select>
-	  	  	</div>
-	  	  	<div class="col-sm-3 col-md-3">	
-	  			<label class="control-label">출근 날짜</label>
-			  	<div class="input-group" style="float:right; width: 100%;">
-			  		<span class="input-group-addon"><span id="calendarId" class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-			  		<input class="form-control" type="text" id="utrWorkDayId" name="utrWorkDay" placeholder="2020-02-22" autocomplete="off" />
-			  	</div>
-	  	  	</div>
-	  	  	<div class="col-sm-3 col-md-3">	
-	  			<label class="control-label">출근 시간</label>
-			  	<div class="input-group" style="float:right; width: 100%;">
-			  		<span class="input-group-addon"><span id="calendarId" class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
-			  		<input class="form-control" type="text" id="utrStartTimeId" name="utrStartTime" maxlength="8" size="8" placeholder="09:00:00" />
-			  	</div>
+		<div id="newMdataFormId" class="item-box" style="display: none;">
+		<form name="newForm" class="form-horizontal" action="${configBean.contextPath?if_exists}/plugins/sample/istSample" method="post" id="newFormId" onkeypress="return captureReturnKey(event);">
+		  	<div class="row">
+		  	  	<div class="col-sm-12 col-md-12">
+						<label class="control-label">샘플 내용</label>
+				  	<div class="input-group" style="float:right; width: 100%;">
+				  		<span class="input-group-addon"><span id="calendarId" class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span>
+				  		<input class="form-control" type="text" name="usmSample" placeholder="sample" autocomplete="off" />
+				  	</div>
+				</div>
 		  	</div>
-	  	  	<div class="col-sm-3 col-md-3">	
-	  			<label class="control-label">퇴근 시간</label>
-			  	<div class="input-group" style="float:right; width: 100%;">
-			  		<span class="input-group-addon"><span id="calendarId" class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
-			  		<input class="form-control" type="text" id="utrEndTimeId" name="utrEndTime" maxlength="8" size="8" placeholder="18:00:00" />
-			  	</div>
-		  	</div>
-	  	  </div>
-		  <div class="row">
-		  	<div class="col-sm-12 col-md-12">
-	  			<label class="control-label">코멘트</label> <span id="idUtrComment">0</span>/200
-	  			<textarea class="taForm" style="height: 50px;" id="utrCommentId" name="utrComment" placeholder="Add the detail information" rows="3" onkeyup="checkByteLength(this, 'idUtrComment', 200)" onfocus="checkByteLength(this, 'idUtrComment', 200)"></textarea>
-		  	</div>
-	  	  </div>
-		  <input type="hidden" id="utrNoId" name="utrNo" />
-		  <input type="hidden" id="tokenId" name="token" />
-		  <br/>
+		  	<input type="hidden" name="token" value="<#if model??>${model.token?if_exists}</#if>" />
+		  	<br/>
 			<p align="center">
-		      <button type="button" class="btn btn-primary" onclick="return confirmData('updateFormId');">저장</button>
-		      <button type="button" class="btn btn-primary" onClick="updateFormCancel();">취소</button>
+				<button type="button" class="btn btn-primary" onclick="return confirmData('newFormId');" >저장</button>
+				<button class="btn btn-primary" type="button" onClick="newFormCancel();">취소</button>
 			</p>
 		</form>
-	</div>
+		</div>
 
-	<div id="userSampleId" style="margin: 10px;">
-		<div id="timeTableId" style="border: 1px solid #CDCDCD;">
-		<div>
-	    <ul class="table-ul table-ul-header">
-	    	<li class="time-li1">근무 종류</li>
-	        <li class="time-li2">출근 날</li>
-	        <li class="time-li3">출근 시간</li>
-	        <li class="time-li4">퇴근 시간</li>
-	        <li class="time-li5">근무한 시간</li>
-	        <li class="time-li6">코멘트(*)</li>
-	    </ul>
-	    <#if plugins??>
-	    <#if plugins.SampleList?has_content>
-	    <#list plugins.SampleList as Sample>
-		    <ul class="table-ul bg-color ul-hover" onmouseover="overChangeColor(this);" onmouseout="outChangeColor(this);" onclick="selectSample(this, '${Sample.utrNo?if_exists}', '${Sample.utrWorkDay?string('yyyy-MM-dd')?if_exists}');">
-			    <li class="time-li1">
-			    <#if Sample.utrKind??>
-				    <#if Sample.utrKind == "0">
-				    		상근
-				    <#elseif Sample.utrKind == "2">
-				    		휴일
-					<#elseif Sample.utrKind == "3">
-				    		외근
-				    <#elseif Sample.utrKind == "4">
-				    		출장
-				    <#elseif Sample.utrKind == "5">
-				    		연수
-				    <#elseif Sample.utrKind == "6">
-				    		파견
-				    <#elseif Sample.utrKind == "7">
-				    		자택근무
-				    <#elseif Sample.utrKind == "8">
-				    		결근
-				    <#elseif Sample.utrKind == "9">
-				    		휴무
-				    <#elseif Sample.utrKind == "10">
-				    		휴가
-				    <#elseif Sample.utrKind == "11">
-				    		생리휴가
-				    <#elseif Sample.utrKind == "12">
-				    		대기
-				    <#else>
-				    		기타
-				    </#if>
-				<#else>
-			    </#if>
-			    </li>
-			    <li class="time-li2"><#if Sample.utrWorkDay??>${Sample.utrWorkDay?string('yyyy-MM-dd')?if_exists}</#if></li>
-		        <li class="time-li3"><#if Sample.utrStartTime??>${Sample.utrStartTime?string('HH:mm:ss')?if_exists}</#if></li>
-		        <li class="time-li4"><#if Sample.utrEndTime??>${Sample.utrEndTime?string('HH:mm:ss')?if_exists}</#if></li>
-		        <li class="time-li5"><#if Sample.utrWorkHour??>${Sample.utrWorkHour?if_exists}</#if></li>
-		        <li class="time-li6" style="text-align: center;"><#if Sample.utrComment?has_content>*</#if></li>
+		<div id="udtMdataFormId" class="item-box" style="background-color: #efebe7;margin: 10px; display: none;">
+		<form id="udtFormId" name="udtForm" class="form-horizontal" action="${configBean.contextPath?if_exists}/plugins/sample/udtSample" method="post" onkeypress="return captureReturnKey(event);">
+			<div class="row">
+		  	  	<div class="col-sm-12 col-md-12">	
+		  			<label class="control-label">샘플 내용</label>
+				  	<div class="input-group" style="float:right; width: 100%;">
+				  		<span class="input-group-addon"><span id="calendarId" class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+				  		<input class="form-control" type="text" id="usmSampleId" name="usmSample" placeholder="sample" autocomplete="off" />
+				  	</div>
+				</div>
+				<input type="hidden" id="usmNoId" name="usmNo" />
+				<input type="hidden" id="tokenId" name="token" />
+				<br/>
+				<p align="center">
+			      <button type="button" class="btn btn-primary" onclick="return confirmData('udtFormId');">저장</button>
+			      <button type="button" class="btn btn-primary" onClick="udtFormCancel();">취소</button>
+			    </p>
+			</div>
+		</form>
+		</div>
+
+		<div id="userSampleId" style="margin: 10px;">
+			<div id="sampleTableId" style="border: 1px solid #CDCDCD;">
+			<div>
+		    <ul class="table-ul table-ul-header">
+		    	<li>No</li>
+		    	<li>샘플 내용</li>
+		        <li>입력한 날짜</li>
 		    </ul>
-		</#list>
-		</#if>
-		</#if>
+		    <#if plugins??>
+		    <#if plugins.sampleList?has_content>
+		    <#list plugins.sampleList as sample>
+			    <ul class="table-ul bg-color ul-hover" onmouseover="overChangeColor(this);" onmouseout="outChangeColor(this);" onclick="selectSample(this, '${sample.usmNo?if_exists}');">
+			    	<li><#if sample.usmNo??>${sample.usmNo?if_exists}</#if></li>
+		        	<li><#if sample.usmSample??>${sample.usmSample?if_exists}</#if></li>
+			        <li><#if sample.utrEndTime??>${sample.insertTime?string('yyyy-MM-dd hh:mm:ss')?if_exists}</#if></li>
+			    </ul>
+			</#list>
+			</#if>
+			</#if>
+			</div>
+			</div>
 		</div>
-		</div>
+
+		<nav class="text-center">
+	    <ul class="pagination">
+		    <#if model?exists>
+		  	<#if model.paging?exists>
+				<#if model.paging.prevPage?exists>
+				<li><a href="/plugins/sample?nowPage=${model.paging.prevPage.nowPage}&allCount=${model.paging.allCount?c}" title="Prev" accesskey="*">Prev</span></a></li>
+				</#if>
+				<#if model.paging.pagingInfoList?has_content>
+					<#list model.paging.pagingInfoList as pageList>
+						<#if model.paging.nowPage?if_exists == pageList.pageNumber?if_exists>
+						<li class="active"><a href="#">${pageList.pageNumber} <span class="sr-only">(current)</span></a></li>
+						<#else>
+						<li><a href="/plugins/sample?nowPage=${pageList.pageNumber}&allCount=${model.paging.allCount?c}">${pageList.pageNumber}</a></li>
+						</#if>
+					</#list>
+				</#if>
+				<#if model.paging.nextPage?exists>
+				<li><a href="/plugins/sample?nowPage=${model.paging.nextPage.nowPage}&allCount=${model.paging.allCount?c}" accesskey="#" title="Next">Next</a></li>
+				</#if>
+			</#if>
+			</#if>
+		</ul>
+		</nav><!-- end #nav -->
 	</div>
-
-	<nav class="text-center">
-    <ul class="pagination">
-	    <#if model?exists>
-	  	<#if model.paging?exists>
-			<#if model.paging.prevPage?exists>
-			<li><a href="/plugins/Sample?nowPage=${model.paging.prevPage.nowPage}&allCount=${model.paging.allCount?c}" title="Prev" accesskey="*">Prev</span></a></li>
-			</#if>
-			<#if model.paging.pagingInfoList?has_content>
-				<#list model.paging.pagingInfoList as pageList>
-					<#if model.paging.nowPage?if_exists == pageList.pageNumber?if_exists>
-					<li class="active"><a href="#">${pageList.pageNumber} <span class="sr-only">(current)</span></a></li>
-					<#else>
-					<li><a href="/plugins/Sample?nowPage=${pageList.pageNumber}&allCount=${model.paging.allCount?c}">${pageList.pageNumber}</a></li>
-					</#if>
-				</#list>
-			</#if>
-			<#if model.paging.nextPage?exists>
-			<li><a href="/plugins/Sample?nowPage=${model.paging.nextPage.nowPage}&allCount=${model.paging.allCount?c}" accesskey="#" title="Next">Next</a></li>
-			</#if>
-		</#if>
-		</#if>
-	</ul>
-	</nav><!-- end #nav -->
-
+	
 </div>
 </div>
 
 <#include "/apps/common/abilistsPluginsLoadJs.ftl"/>
-<#include "/apps/Sample/js/indexJs.ftl"/>
+<#include "/apps/sample/js/indexJs.ftl"/>
 
 </@layout.myLayout>

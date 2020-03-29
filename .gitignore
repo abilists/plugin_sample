@@ -1,4 +1,5 @@
 /.settings
+/.gradle
 # Compiled class file
 *.class
 

@@ -4,14 +4,14 @@ import base.bean.para.CommonPara;
 
 public class IstSamplePara extends CommonPara {
 
-	private String utrWorkDay;
+	private String usmSample;
 
-	public String getUtrWorkDay() {
-		return utrWorkDay;
+	public String getUsmSample() {
+		return usmSample;
 	}
 
-	public void setUtrWorkDay(String utrWorkDay) {
-		this.utrWorkDay = utrWorkDay;
+	public void setUsmSample(String usmSample) {
+		this.usmSample = usmSample;
 	}
-	
+
 }

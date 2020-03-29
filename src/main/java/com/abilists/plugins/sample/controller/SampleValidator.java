@@ -27,39 +27,11 @@ public class SampleValidator implements BaseValidator {
 	public <T> Map<String, String> validateBusiness(T para, Errors errors, Locale local) throws IOException {
 		Map<String, String> mapErrorMessage = new HashMap<>();
 
-		StringBuffer sbStart = new StringBuffer();
-		StringBuffer sbEnd = new StringBuffer();
 		if (para instanceof UdtUserCareerPara) {
 			UdtUserCareerPara udtUserCareerPara = (UdtUserCareerPara)para;
 
-			if(udtUserCareerPara.getUcPresent() == null) {
-				String startDate = sbStart.append(udtUserCareerPara.getUcStartYear()).append(udtUserCareerPara.getUcStartMonth()).toString(); 
-				String endDate = sbEnd.append(udtUserCareerPara.getUcEndYear()).append(udtUserCareerPara.getUcEndMonth()).toString();
-				if(Integer.parseInt(startDate) >=  Integer.parseInt(endDate)) {
-					mapErrorMessage.put("errorMessage", message.getMessage("parameter.error.message", null, local));
-					logger.warn("Invalidate your career date in udtUserCareer. startDate={}, endDate={}", startDate, endDate );
-				}
-			} else {
-				// Still working here, so set the default end date forcedly.
-				udtUserCareerPara.setUcEndYear("0");
-				udtUserCareerPara.setUcEndMonth("0");
-			}
-
 		} else if(para instanceof IstUserCareerPara) {
 			IstUserCareerPara istUserCareerPara = (IstUserCareerPara)para;
-
-			if(istUserCareerPara.getUcPresent() == null) {
-				String startDate = sbStart.append(istUserCareerPara.getUcStartYear()).append(istUserCareerPara.getUcStartMonth()).toString(); 
-				String endDate = sbEnd.append(istUserCareerPara.getUcEndYear()).append(istUserCareerPara.getUcEndMonth()).toString();
-				if(Integer.parseInt(startDate) >=  Integer.parseInt(endDate)) {
-					mapErrorMessage.put("errorMessage", message.getMessage("parameter.error.message", null, local));
-					logger.warn("Invalidate your career date in istUserCareer. startDate={}, endDate={}", startDate, endDate );
-				}
-			} else {
-				// Still working here, so set the default end date forcedly.
-				istUserCareerPara.setUcEndYear("0");
-				istUserCareerPara.setUcEndMonth("0");
-			}
 
 		}
 

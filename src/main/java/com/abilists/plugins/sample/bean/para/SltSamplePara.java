@@ -4,23 +4,14 @@ import base.bean.para.CommonPara;
 
 public class SltSamplePara extends CommonPara {
 
-	private String utrNo;
-	private String utrWorkDay;
+	private String usmNo;
 
-	public String getUtrNo() {
-		return utrNo;
+	public String getUsmNo() {
+		return usmNo;
 	}
 
-	public void setUtrNo(String utrNo) {
-		this.utrNo = utrNo;
-	}
-
-	public String getUtrWorkDay() {
-		return utrWorkDay;
-	}
-
-	public void setUtrWorkDay(String utrWorkDay) {
-		this.utrWorkDay = utrWorkDay;
+	public void setUsmNo(String usmNo) {
+		this.usmNo = usmNo;
 	}
 
 }

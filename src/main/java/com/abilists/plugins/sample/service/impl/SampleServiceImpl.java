@@ -1,6 +1,5 @@
 package com.abilists.plugins.sample.service.impl;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,9 +59,11 @@ public class SampleServiceImpl extends AbilistsAbstractService implements Sample
 
 	public SampleModel sltSample(SltSamplePara sltSamplePara) throws Exception {
 		SampleModel Sample = null;
-	
+
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("usmNo", sltSamplePara.getUsmNo());
 		map.put("userId", sltSamplePara.getUserId());
+
 		try {
 			sqlSessionSlaveFactory.setDataSource(getDispersionDb());
 			Sample = sAbilistsDao.getMapper(SSampleDao.class).sltSample(map);
@@ -93,6 +94,7 @@ public class SampleServiceImpl extends AbilistsAbstractService implements Sample
 		int intResult = 0;
 
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("usmSample", istSamplePara.getUsmSample());
 		map.put("userId", istSamplePara.getUserId());
 
 		try {
@@ -121,10 +123,12 @@ public class SampleServiceImpl extends AbilistsAbstractService implements Sample
 		int intResult = 0;
 
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("usmNo", udtSamplePara.getUsmNo());
+		map.put("usmSample", udtSamplePara.getUsmSample());
 		map.put("userId", udtSamplePara.getUserId());
 
 		try {
-			intResult = mAbilistsDao.getMapper(MSampleDao.class).dltSample(map);
+			intResult = mAbilistsDao.getMapper(MSampleDao.class).udtSample(map);
 		} catch (Exception e) {
 			logger.error("Exception error", e);
 		}
@@ -144,6 +148,7 @@ public class SampleServiceImpl extends AbilistsAbstractService implements Sample
 		int intResult = 0;
 
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("usmNo", dltSamplePara.getUsmNo());
 		map.put("userId", dltSamplePara.getUserId());
 
 		try {
@@ -153,7 +158,7 @@ public class SampleServiceImpl extends AbilistsAbstractService implements Sample
 		}
 
 		if(intResult < 1) {
-			logger.error("dltSample error, userId={}", dltSamplePara.getUserId());
+			logger.error("dltSample error, usmNo={}, userId={}", dltSamplePara.getUsmNo(), dltSamplePara.getUserId());
 			return false;
 		}
 

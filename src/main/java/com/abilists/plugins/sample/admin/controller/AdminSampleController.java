@@ -54,7 +54,7 @@ public class AdminSampleController extends AbstractBaseController {
 		model.addAttribute("model", adminAbilistsModel);
 		model.addAttribute("plugins", pluginsModel);
 
-		return "apps/Sample/admin/index";
+		return "apps/sample/admin/index";
 	}
 
 }

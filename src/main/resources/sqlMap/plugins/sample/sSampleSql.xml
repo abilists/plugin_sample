@@ -50,7 +50,7 @@
 			user_sample
 		WHERE
 			user_id = #{userId} AND
-			utr_delete = '0'
+			usm_delete = '0'
 	</select>
 
 </mapper>

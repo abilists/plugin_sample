@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS abilists.user_sample (
   usm_no BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  usm_sample VARCHAR(100) NULL,
   usm_status VARCHAR(2) NULL,
   usm_delete CHAR(1) NULL,
   user_id VARCHAR(100) NULL,
