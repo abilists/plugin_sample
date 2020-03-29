@@ -9,72 +9,30 @@ public class SampleModel extends BasicModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long utrNo;
-	private String utrKind;
-	private Date utrWorkDay;
-	private Date utrStartTime;
-	private Date utrEndTime;
-	private String utrWorkHour;
-	private String utrComment;
-	private String utrPermit;
-	private String utrStatus;
+	private long usmNo;
+	private String usmSample;
+  	private String usmStatus;
 	private String userId;
 	private Date insertTime;
 	private Date updateTime;
 
-	public long getUtrNo() {
-		return utrNo;
+	public long getUsmNo() {
+		return usmNo;
 	}
-	public void setUtrNo(long utrNo) {
-		this.utrNo = utrNo;
+	public void setUsmNo(long usmNo) {
+		this.usmNo = usmNo;
 	}
-	public String getUtrKind() {
-		return utrKind;
+	public String getUsmSample() {
+		return usmSample;
 	}
-	public void setUtrKind(String utrKind) {
-		this.utrKind = utrKind;
+	public void setUsmSample(String usmSample) {
+		this.usmSample = usmSample;
 	}
-	public Date getUtrWorkDay() {
-		return utrWorkDay;
+	public String getUsmStatus() {
+		return usmStatus;
 	}
-	public void setUtrWorkDay(Date utrWorkDay) {
-		this.utrWorkDay = utrWorkDay;
-	}
-	public Date getUtrStartTime() {
-		return utrStartTime;
-	}
-	public void setUtrStartTime(Date utrStartTime) {
-		this.utrStartTime = utrStartTime;
-	}
-	public Date getUtrEndTime() {
-		return utrEndTime;
-	}
-	public void setUtrEndTime(Date utrEndTime) {
-		this.utrEndTime = utrEndTime;
-	}
-	public String getUtrWorkHour() {
-		return utrWorkHour;
-	}
-	public void setUtrWorkHour(String utrWorkHour) {
-		this.utrWorkHour = utrWorkHour;
-	}
-	public String getUtrComment() {
-		return utrComment;
-	}
-	public void setUtrComment(String utrComment) {
-		this.utrComment = utrComment;
-	}
-	public String getUtrPermit() {
-		return utrPermit;
-	}
-	public void setUtrPermit(String utrPermit) {
-		this.utrPermit = utrPermit;
-	}
-	public String getUtrStatus() {
-		return utrStatus;
-	}
-	public void setUtrStatus(String utrStatus) {
-		this.utrStatus = utrStatus;
+	public void setUsmStatus(String usmStatus) {
+		this.usmStatus = usmStatus;
 	}
 	public String getUserId() {
 		return userId;

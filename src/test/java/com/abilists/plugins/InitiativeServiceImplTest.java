@@ -26,6 +26,10 @@ public class InitiativeServiceImplTest {
 	@Autowired
 	private BasicDataSource mysqlMaster;
 
+	/**
+	 * You should use this to make the table into your databases(H2 or Mysql)
+	 * @throws Exception
+	 */
 	@Test
 	public void createTablesTest() throws Exception {
 

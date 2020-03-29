@@ -2,100 +2,54 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.abilists.plugins.Sample.dao.SSampleDao">
+<mapper namespace="com.abilists.plugins.sample.dao.SSampleDao">
 
 	<select id="sltSampleList" parameterType="map" 
 		resultType="com.abilists.plugins.Sample.bean.model.SampleModel">
 		SELECT
-			utr_no,
-		  	utr_kind,
-		  	utr_work_day,
-		  	utr_start_time,
-		  	utr_end_time,
-		  	utr_work_hour,
-		  	utr_comment,
-		  	utr_permit,
-		  	utr_status,
-		  	utr_delete,
+			usm_no,
+		  	usm_sample,
+		  	usm_status,
+		  	usm_delete,
 		  	user_id,
 			insert_time,
 			update_time
 		FROM
-			user_time_record
+			user_sample
 		WHERE
-		<if test="userId != null and userId != ''">
 			user_id = #{userId} AND
-		</if>
-			utr_delete = '0'
+			usm_delete = '0'
 		ORDER BY
-			utr_work_day DESC, UTR_NO DESC
+			usm_no DESC
 		LIMIT
 			#{nowPage}, #{row}
-	</select>
-
-	<select id="sltSampleTop" parameterType="map" 
-		resultType="com.abilists.plugins.Sample.bean.model.SampleModel">
-		SELECT
-			utr_no,
-		  	utr_kind,
-			utr_work_day,
-		  	utr_start_time,
-		  	utr_end_time,
-		  	utr_work_hour,
-		  	utr_comment,
-		  	utr_permit,
-		  	utr_status,
-		  	utr_delete,
-		  	user_id,
-			insert_time,
-			update_time
-		FROM
-			user_time_record
-		WHERE
-			user_id = #{userId} AND
-			utr_delete = '0'
-		ORDER BY 
-			utr_work_day DESC 
-		LIMIT
-			0, 1
 	</select>
 
 	<select id="sltSample" parameterType="map" 
 		resultType="com.abilists.plugins.Sample.bean.model.SampleModel">
 		SELECT
-			utr_no,
-		  	utr_kind,
-			utr_work_day,
-		  	utr_start_time,
-		  	utr_end_time,
-		  	utr_work_hour,
-		  	utr_comment,
-		  	utr_permit,
-		  	utr_status,
-		  	utr_delete,
+			usm_no,
+		  	usm_sample,
+		  	usm_status,
+		  	usm_delete,
 		  	user_id,
 			insert_time,
 			update_time
 		FROM
-			user_time_record
+			user_sample
 		WHERE
-		<if test="utrNo != null and utrNo != ''">
-			utr_no = #{utrNo} AND
-		</if>
+			usm_no = #{usmNo} AND
 			user_id = #{userId} AND
-			utr_work_day = #{utrWorkDay} AND
-			utr_delete = '0'
+			usm_delete = '0'
 	</select>
 
 	<select id="sltSampleSum" parameterType="map" resultType="java.lang.Integer">
 		SELECT
 			COUNT(*) as cnt
 		FROM
-			user_time_record
+			user_sample
 		WHERE
-		<if test="userId != null and userId != ''">
 			user_id = #{userId} AND
-		</if>
 			utr_delete = '0'
 	</select>
 

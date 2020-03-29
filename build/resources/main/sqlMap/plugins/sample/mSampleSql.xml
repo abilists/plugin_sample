@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.abilists.plugins.Sample.dao.MSampleDao">
+
+	<insert id="istSample" parameterType="map">
+		INSERT INTO user_time_record (
+		  	utr_kind,
+			utr_work_day,
+		  	utr_start_time,
+		  	utr_end_time,
+		  	utr_work_hour,
+		  	utr_comment,
+		  	utr_permit,
+		  	utr_status,
+		  	utr_delete,
+		  	user_id,
+			insert_time,
+			update_time
+		) VALUES (
+			#{utrKind},
+			#{utrWorkDay},
+			#{utrStartTime},
+			#{utrEndTime},
+			#{utrWorkHour},
+			#{utrComment},
+			'0',
+			'0',
+			'0',
+			#{userId},
+			now(),
+			now()
+		)
+	</insert>
+
+	<update id="udtSample" parameterType="map">
+		UPDATE 
+			user_time_record
+		SET
+		<if test="utrKind != null and utrKind !=''">
+			utr_kind = #{utrKind},
+		</if>
+		<if test="utrWorkDay != null and utrWorkDay !=''">
+			utr_work_day = #{utrWorkDay},
+		</if>
+		<if test="utrStartTime != null and utrStartTime !=''">
+			utr_start_time = #{utrStartTime},
+		</if>
+		<if test="utrEndTime != null and utrEndTime !=''">
+			utr_end_time = #{utrEndTime},
+		</if>
+		<if test="utrWorkHour != null and utrWorkHour !=''">
+			utr_work_hour = #{utrWorkHour},
+		</if>
+		<if test="utrComment != null and utrComment !=''">
+			utr_comment = #{utrComment},
+		</if>
+		<if test="utrPermit != null and utrPermit !=''">
+			utr_permit = #{utrPermit},
+		</if>
+		<if test="utrStatus != null and utrStatus !=''">
+			utr_status = #{utrStatus},
+		</if>
+			update_time = now()
+		WHERE
+		<if test="utrNo != null and utrNo !=''">
+			utr_no = #{utrNo} AND
+		</if>
+			user_id = #{userId} AND
+			utr_work_day = #{utrWorkDay} AND
+			utr_delete = '0'
+	</update>
+
+	<update id="dltSample" parameterType="map">
+		UPDATE 
+			user_time_record
+		SET
+			utr_delete = #{utrDelete},
+			update_time = now()
+		WHERE
+			utr_no = #{utrNo}
+	</update>
+
+</mapper>

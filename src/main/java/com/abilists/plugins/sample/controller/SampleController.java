@@ -28,7 +28,7 @@ import com.abilists.plugins.sample.bean.para.UdtSamplePara;
 import com.abilists.plugins.sample.service.SampleService;
 
 @Controller
-@RequestMapping("/plugins/Sample")
+@RequestMapping("/plugins/sample")
 public class SampleController extends CommonAbilistsController {
 	final Logger logger = LoggerFactory.getLogger(SampleController.class);
 
