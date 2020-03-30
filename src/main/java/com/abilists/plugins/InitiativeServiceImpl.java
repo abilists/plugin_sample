@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.HashMap;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,25 +52,6 @@ public class InitiativeServiceImpl extends AbilistsAbstractService implements Pl
 	      Class.forName(MY_DRIVER);
 	      conn = DriverManager.getConnection(mapHash.get(PluginService.DB_URL),  mapHash.get(PluginService.DB_USERNAME), mapHash.get(PluginService.DB_PASSWORD));
 
-//	      Boolean tableExist = false;
-//	      PreparedStatement preparedStatement = conn.prepareStatement("SHOW TABLES FROM ABILISTS;");
-//	      Boolean pexeute = preparedStatement.execute();
-//	      if(pexeute) {
-//	    	  ResultSet resultSet = preparedStatement.getResultSet();
-//	          while (resultSet.next()) {
-//	        	  if(resultSet.getString(resultSet.getRow()).equals(mapHash.get(PluginService.TABLE_NAME))) {
-//	              	  tableExist = true;
-//	              	  logger.info("There is the same table name in ABILISTS.");
-//	              	  break;
-//                  }
-//              }
-//          }
-//	      // There is the same table name, please check the table on your Schema
-//	      if(tableExist) {
-//	    	  logger.error("There is the same table name, please check the table on your Schema. table name=" + mapHash.get(PluginService.TABLE_NAME));
-//	    	  return "false";
-//	      }
-
 	      preparedStmt = conn.prepareStatement(sbSql.toString());
 	      preparedStmt.execute();
 	    }
@@ -87,46 +67,6 @@ public class InitiativeServiceImpl extends AbilistsAbstractService implements Pl
 	    		conn.close();
 	    	}
 		}
-		return "true";
-	}
-
-	public String createTables3(String tableName) throws Exception {
-
-		int intResult = 0;
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("tableName", tableName);
-
-		try {
-
-			// InputStream isResource = new FileInputStream("masterPluginsMapH2.xml");
-
-//	        String resource = "masterPluginsMapH2.xml";
-//	        Reader reader = Resources.getResourceAsReader(resource);
-//	        SqlSessionFactory sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder().build(reader);
-//
-//	        Configuration configuration = sqlSessionFactoryBuilder.getConfiguration();
-//			InputStream inputStream = getClass().getClassLoader().getResourceAsStream("sqlMap/plugins/mInitiativeSql.xml");
-//			XMLMapperBuilder mapperParser = new XMLMapperBuilder(inputStream, configuration, "sqlMap/plugins/mInitiativeSql.xml", configuration.getSqlFragments());
-//			mapperParser.parse();
-//
-////			SqlSession sqlSession = sqlSessionFactoryBuilder.openSession();
-//			MInitiativeDao mInitiativeDao = mAbilistsDao.getMapper(MInitiativeDao.class);
-//
-//			if(mInitiativeDao == null) {
-//				logger.info("mInitiativeDao is null");
-//			}
-//
-//			intResult = mInitiativeDao.initiativeTables(map);
-		} catch (Exception e) {
-			logger.error("Exception error", e);
-		}
-		
-		if(intResult < 1) {
-			logger.error("createTables error, tableName={}", tableName);
-			return "false";
-		}
-
 		return "true";
 	}
 
