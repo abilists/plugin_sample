@@ -9,29 +9,25 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.MessageSource;
 import org.springframework.validation.Errors;
 
-import com.abilists.bean.para.profile.IstUserCareerPara;
-import com.abilists.bean.para.profile.UdtUserCareerPara;
 import com.abilists.core.controller.BaseValidator;
+import com.abilists.plugins.sample.bean.para.IstSamplePara;
+import com.abilists.plugins.sample.bean.para.UdtSamplePara;
 
 public class SampleValidator implements BaseValidator {
 
 	final Logger logger = LoggerFactory.getLogger(SampleValidator.class);
-	
-	private MessageSource message;
-
 
 	@Override
 	public <T> Map<String, String> validateBusiness(T para, Errors errors, Locale local) throws IOException {
 		Map<String, String> mapErrorMessage = new HashMap<>();
 
-		if (para instanceof UdtUserCareerPara) {
-			UdtUserCareerPara udtUserCareerPara = (UdtUserCareerPara)para;
+		if (para instanceof UdtSamplePara) {
+			UdtSamplePara udtSamplePara = (UdtSamplePara)para;
 
-		} else if(para instanceof IstUserCareerPara) {
-			IstUserCareerPara istUserCareerPara = (IstUserCareerPara)para;
+		} else if(para instanceof IstSamplePara) {
+			IstSamplePara istSamplePara = (IstSamplePara)para;
 
 		}
 
@@ -53,10 +49,6 @@ public class SampleValidator implements BaseValidator {
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public void setMessage(MessageSource message) {
-		this.message = message;
 	}
 
 }
