@@ -20,7 +20,7 @@ import com.abilists.plugins.sample.bean.PluginsModel;
 import base.bean.para.CommonPara;
 
 @Controller
-@RequestMapping("/admin/plugins/Sample")
+@RequestMapping("/admin/plugins/sample")
 public class AdminSampleController extends AbstractBaseController {
 
 	final Logger logger = LoggerFactory.getLogger(AdminSampleController.class);
@@ -36,7 +36,7 @@ public class AdminSampleController extends AbstractBaseController {
 
 		AdminAbilistsModel adminAbilistsModel = new AdminAbilistsModel();
 		adminAbilistsModel.setNavi("plugins");
-		adminAbilistsModel.setMenu("Sample");
+		adminAbilistsModel.setMenu("sample");
 		
 		PluginsModel pluginsModel = new PluginsModel();
 

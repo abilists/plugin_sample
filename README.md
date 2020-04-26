@@ -51,6 +51,7 @@ $ git clone https://github.com/abilists/plugin_sample.git
 먼저 아래의 유틸리티를 Clone을 해서 Local에 설치할 필요가 있습니다.
 
 * [io.utility:security:0.0.1](https://github.com/abilists/security_utility)
+* [io.utility:email:0.0.3](https://github.com/abilists/email_utility)
 
 Local 시스템에서 설치합니다.
 ```
@@ -66,6 +67,7 @@ $ gradle jettyRun
 확인하는 URL
 ```
 http://localhost:9005/plugins/sample/index
+http://localhost:9005/admin/plugins/sample/index
 ```
 
 ## How to build

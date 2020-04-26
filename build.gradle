@@ -17,7 +17,7 @@ buildscript {
 	}
 }
 
-version = '0.1.0'
+version = '0.1.1'
 
 // archivesBaseName = 'pluginSurvey'
 
@@ -59,6 +59,7 @@ dependencies {
 	}
 
 	compile "io.utility:security:0.0.1"
+	compile "io.utility:email:0.0.3"
 
 	compile 'javax.validation:validation-api:1.1.0.Final'
 	compile "org.mybatis:mybatis:3.2.8"
@@ -108,7 +109,7 @@ jar {
 configure(install.repositories.mavenInstaller) {
     pom.project {
 		group = 'com.abilists.plugins'
-		artifactId 'plugin_time_record'
+		artifactId 'sample'
         inceptionYear '2020'
         packaging 'jar'
         licenses {
@@ -125,7 +126,7 @@ configure(install.repositories.mavenInstaller) {
 // $ gradle buildJar
 task buildJar << {
 	copy {
-		from "build/libs/plugin_time_record-" + version + ".jar"
+		from "build/libs/plugin_sample-" + version + ".jar"
 		into "${System.getProperty( 'user.dir' )}" + "/../abilists_plugins/plugins"
 //		rename { String fileName -> fileName.replace("plugin_time_record-" + version + ".jar", "plugin_time_record-" + version + ".sfn")}
 		include '**/*.jar'
