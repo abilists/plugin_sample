@@ -16,7 +16,7 @@
 		<#include "/apps/common/abilistsSuccess.ftl"/>
 
 		<div id="newMdataFormId" class="item-box" style="display: none;">
-		<form name="newForm" class="form-horizontal" action="${configBean.contextPath?if_exists}/plugins/sample/istSample" method="post" id="newFormId" onkeypress="return captureReturnKey(event);">
+		<form id="newFormId" name="newForm" class="form-horizontal" action="${configBean.contextPath?if_exists}/plugins/sample/istSample" method="post" onkeypress="return captureReturnKey(event);">
 		  	<div class="row">
 		  	  	<div class="col-sm-12 col-md-12">
 						<label class="control-label">샘플 내용</label>
@@ -103,7 +103,7 @@
 		</ul>
 		</nav><!-- end #nav -->
 	</div>
-	
+
 </div>
 </div>
 

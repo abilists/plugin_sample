@@ -37,7 +37,7 @@ function selectSample(x, usmNo) {
 	$(document).ready(function() {
         $.ajax({
             type: 'POST',
-            url: 'sample/sltSampleAjax',
+            url: '${configBean.contextPath?if_exists}/sample/sltSampleAjax',
             contentType: "application/json",
             dataType: "json",
             data: '{ "usmNo" : "' + usmNo + '", "token" : "' + tokenInput.value + '"}',
@@ -103,7 +103,7 @@ function submitUpdateFormUserReports() {
  * Remove a survey
  */
 function submitDeleteFormReports() {
-	document.updateForm.action = "/plugins/sample/dltSample";
+	document.updateForm.action = "${configBean.contextPath?if_exists}/plugins/sample/dltSample";
 	document.updateForm.submit();
 }
 
