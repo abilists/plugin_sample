@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.abilists.bean.model.account.UsersModel;
-import com.abilists.plugins.interceptor.PluginsInterceptor;
 
 public class DevInterceptor implements PluginsInterceptor {
 

@@ -56,7 +56,7 @@ public class SampleController extends CommonAbilistsController {
 		PluginsModel pluginsModel = new PluginsModel();
 
 		// Set user id
-		this.handleSessionInfo(request.getSession(), sltSamplePara);
+		this.handleSessionInfo(request.getSession(), sltSamplePara, false);
 
 		// Set Paging list
 		int intSum = sampleService.sltSampleSum(sltSamplePara);
@@ -81,7 +81,7 @@ public class SampleController extends CommonAbilistsController {
 			HttpSession session) throws Exception {
 
 		// Set user id
-		this.handleSessionInfo(session, sltSamplePara);
+		this.handleSessionInfo(session, sltSamplePara, false);
 
 		// Get user Reports.
 		SampleModel sample = sampleService.sltSample(sltSamplePara);
@@ -120,7 +120,7 @@ public class SampleController extends CommonAbilistsController {
 		}
 
 		// Set user id
-		this.handleSessionInfo(request.getSession(), istSamplePara);
+		this.handleSessionInfo(request.getSession(), istSamplePara, false);
 
 		logger.info("2 userId=" + istSamplePara.getUserId());
 
@@ -169,7 +169,7 @@ public class SampleController extends CommonAbilistsController {
 		}
 
 		// Set user id
-		this.handleSessionInfo(request.getSession(), udtSamplePara);
+		this.handleSessionInfo(request.getSession(), udtSamplePara, false);
 
 		// Validate token
 		String key = this.makeKey(udtSamplePara.getUserId(), AbstractBaseController.PREFIX_UDT_KEY);
@@ -217,7 +217,7 @@ public class SampleController extends CommonAbilistsController {
 		}
 
 		// Set user id
-		this.handleSessionInfo(request.getSession(), dltSamplePara);
+		this.handleSessionInfo(request.getSession(), dltSamplePara, false);
 
 		// Validate token
 		String key = this.makeKey(dltSamplePara.getUserId(), AbstractBaseController.PREFIX_UDT_KEY);

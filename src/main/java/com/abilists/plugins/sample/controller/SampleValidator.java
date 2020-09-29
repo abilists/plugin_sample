@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSource;
 import org.springframework.validation.Errors;
 
 import com.abilists.core.controller.BaseValidator;
@@ -20,7 +21,7 @@ public class SampleValidator implements BaseValidator {
 	final Logger logger = LoggerFactory.getLogger(SampleValidator.class);
 
 	@Override
-	public <T> Map<String, String> validateBusiness(T para, Errors errors, Locale local) throws IOException {
+	public <T> Map<String, String> validateBusiness(T para, MessageSource message, Locale locale) throws IOException {
 		Map<String, String> mapErrorMessage = new HashMap<>();
 
 		if (para instanceof UdtSamplePara) {
