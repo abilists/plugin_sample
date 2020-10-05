@@ -15,7 +15,7 @@ This is a sample for plugins of Abilists
 
 ---
 
-## New in v0.0.1
+## New in v0.1.2
 
 - 데이터 입력
 - 데이터 습득
